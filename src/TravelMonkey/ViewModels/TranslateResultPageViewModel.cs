@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TravelMonkey.Models;
 using TravelMonkey.Services;
 using Xamarin.Forms;
 
@@ -42,12 +43,33 @@ namespace TravelMonkey.ViewModels
 
         private async void TranslateText()
         {
-            var result = await _translationService.TranslateText(_inputText);
+            OldSearchs old = null;
+            foreach(var item in DataTranslationsService.Instance.Listado)
+            {
+                if (item.Phrase.Equals(_inputText))
+                {
+                    old = item;
+                    break;
+                }
+            }
+            if (old == null)
+            {
+                var result = await _translationService.TranslateText(_inputText);
 
-            if (!result.Succeeded)
-                MessagingCenter.Send(this, Constants.TranslationFailedMessage);
-
-            Translations = result.Translations;
+                if (!result.Succeeded)
+                {
+                    MessagingCenter.Send(this, Constants.TranslationFailedMessage);
+                }
+                else
+                {
+                    DataTranslationsService.Instance.Add(_inputText, result.Translations);
+                }
+                Translations = result.Translations;
+            }
+            else
+            {
+                Translations = old.Resultados;
+            }
         }
     }
 }

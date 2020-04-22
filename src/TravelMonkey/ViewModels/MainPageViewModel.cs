@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Timers;
+using System.Windows.Input;
 using TravelMonkey.Data;
 using TravelMonkey.Models;
+using TravelMonkey.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -33,6 +36,7 @@ namespace TravelMonkey.ViewModels
                 });
         });
 
+        public ICommand BTgoLastSearchs { get; }
         public MainPageViewModel()
         {
             if (Destinations.Count > 0)
@@ -49,6 +53,12 @@ namespace TravelMonkey.ViewModels
                         CurrentDestination = Destinations[currentIdx + 1];
                 };
             }
+            BTgoLastSearchs = new Command(()=>GoLast());
+        }
+
+        private void GoLast()
+        {
+            App.Current.MainPage.Navigation.PushModalAsync(new OldTranslationsPage());
         }
 
         public void StartSlideShow()

@@ -42,10 +42,17 @@
                         </StackLayout>
 
                         <!-- Translate -->
-                        <yummy:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#99ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
-                                <Label FontSize="20" VerticalOptions="Center" TextColor="Gray" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
-                                <Entry x:Name="TranslateTextEntry" FontFamily="LatoRegular" TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Completed="Entry_Completed" Placeholder="Need to translate something?" PlaceholderColor="Gray" />
+                        <yummy:PancakeView Margin="20,0" HeightRequest="80" BackgroundColor="#99ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
+                                    <Label FontSize="20" VerticalOptions="Center" TextColor="Gray" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
+                                    <Entry x:Name="TranslateTextEntry" FontFamily="LatoRegular" TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Completed="Entry_Completed" Placeholder="Need to translate something?" PlaceholderColor="Gray" />
+                                </StackLayout>
+                                <Label Text="Last searchs" TextDecorations="Underline" TextColor="Blue">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BTgoLastSearchs}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </StackLayout>
                         </yummy:PancakeView>
                     </StackLayout>

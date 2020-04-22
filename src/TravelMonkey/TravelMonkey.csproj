@@ -22,11 +22,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
     <Folder Include="Effects\" />
-    <Folder Include="Views\" />
-    <Folder Include="Services\" />
     <Folder Include="Data\" />
     <Folder Include="Models\CognitiveServices\" />
     <Folder Include="Converters\" />
@@ -49,6 +45,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\OldTranslationsPage.xaml.cs">
+      <DependentUpon>OldTranslationsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
